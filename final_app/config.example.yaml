@@ -1,0 +1,61 @@
+# Vision Model Training Pipeline Configuration
+# Edit this file to customize your training pipeline
+
+# Vision API Settings
+vision_api:
+  base_url: "https://visionapi.xpertcapture.com"
+  phone: ""
+  password: ""
+
+# Azure Storage Settings
+azure_storage:
+  connection_string: ""
+  share_name: "myshare"
+  search_dirs: null  # null means search all directories, or specify: ["folder1", "folder2"]
+
+# Dataset Settings
+dataset:
+  coco_json_path: "coco_dataset.json"
+  coco_dataset_dir: "coco_dataset"
+  yolo_dataset_dir: "yolo_dataset"
+  augmented_dataset_dir: "augmented_dataset"
+  train_ratio: 0.7    # 70% for training
+  val_ratio: 0.2      # 20% for validation
+  test_ratio: 0.1     # 10% for testing
+  skip_existing_downloads: true  # Skip re-downloading existing images
+
+# Training Settings
+training:
+  model_path: "./Model/yolo11m-seg.pt"  # Path to pretrained model
+  epochs: 10           # Number of training epochs
+  batch_size: 24       # Batch size (adjust based on GPU memory)
+  imgsz: 640          # Image size for training
+  patience: 10        # Early stopping patience
+  workers: 0          # Number of workers (0 = safe for most systems)
+  device: 0           # GPU device (0 = first GPU, "cpu" for CPU)
+  optimizer: "AdamW"  # Optimizer: AdamW, SGD, Adam
+  lr0: 0.001          # Initial learning rate
+  lrf: 0.01           # Final learning rate (as fraction of lr0)
+  weight_decay: 0.0005  # Weight decay for regularization
+  dropout: 0.2        # Dropout rate
+  mosaic: 1.0         # Mosaic augmentation
+  mixup: 0.15         # Mixup augmentation
+  hsv_h: 0.015        # HSV hue augmentation
+  hsv_s: 0.7          # HSV saturation augmentation
+  hsv_v: 0.4          # HSV value augmentation
+
+# Export Settings
+export:
+  format: "tflite"    # Export format: tflite, onnx, torchscript, etc.
+  output_dir: "exported_models"  # Directory for exported models
+
+# Pipeline Control
+# Enable/disable specific steps
+pipeline:
+  steps:
+    fetch_annotations: true   # Fetch annotations from Vision API
+    download_images: true     # Download images from Azure Files
+    convert_to_yolo: true     # Convert COCO to YOLO format
+    augment_dataset: true     # Apply augmentations
+    train_model: true         # Train the model
+    export_model: true        # Export to target format

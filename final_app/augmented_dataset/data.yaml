@@ -1,0 +1,5 @@
+names:
+- Eva Hair oil
+test: /media/Dev/NDEV/VMT/final_app/augmented_dataset/test/images
+train: /media/Dev/NDEV/VMT/final_app/augmented_dataset/train/images
+val: /media/Dev/NDEV/VMT/final_app/augmented_dataset/valid/images

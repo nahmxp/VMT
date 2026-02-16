@@ -1,0 +1,5 @@
+names:
+- Eva Hair oil
+test: yolo_dataset/images/test
+train: yolo_dataset/images/train
+val: yolo_dataset/images/val

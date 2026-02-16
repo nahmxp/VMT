@@ -1,0 +1,83 @@
+
+============================================================
+ VISION MODEL TRAINING PIPELINE
+============================================================
+
+Started at: 2025-12-30 13:51:23
+
+
+============================================================
+ STEP 1: Fetch Annotations from Vision API
+============================================================
+
+✓ Vision API login successful
+✓ Fetched 3 annotations from Vision API
+
+Building COCO dataset...
+  - 13 images
+  - 27 annotations
+
+✓ COCO dataset built successfully:
+  - 13 images
+  - 27 annotations
+  - 1 categories
+✓ COCO JSON saved to coco_dataset.json
+
+✓ Step 1 Complete: COCO JSON created
+
+============================================================
+ STEP 2: Download Images from Azure Files
+============================================================
+
+✓ Loaded COCO JSON: 13 images
+✓ Created directory structure: coco_dataset
+
+Downloading 13 images from Azure...
+Downloading images:   0%|          | 0/13 [00:00<?, ?it/s]Downloading images: 100%|██████████| 13/13 [00:00<00:00, 19335.44it/s]
+
+Download Statistics:
+  Total: 13
+  Downloaded: 0
+  Skipped: 13
+  Not found: 0
+  Failed: 0
+✓ Saved annotations to coco_dataset/annotations.json
+
+✓ Step 2 Complete: Images downloaded
+
+============================================================
+ STEP 3: Convert COCO to YOLO Format
+============================================================
+
+Converting:   0%|          | 0/13 [00:00<?, ?it/s]Converting: 100%|██████████| 13/13 [00:00<00:00, 914.97it/s]
+
+✅ Conversion complete! Dataset saved in yolo_dataset
+
+✓ Step 3 Complete: COCO converted to YOLO
+
+============================================================
+ STEP 4: Augment YOLO Dataset
+============================================================
+
+
+Augmenting dataset...
+
+✓ Augmentation complete! Dataset saved in augmented_dataset
+
+✓ Step 4 Complete: Dataset augmented
+
+⊗ Step 5 Skipped: train_model = False
+
+⊗ Step 6 Skipped: export_model = False
+
+============================================================
+ PIPELINE COMPLETE
+============================================================
+
+Started:  2025-12-30 13:51:23
+Finished: 2025-12-30 13:51:28
+Duration: 0:00:04.318115
+
+✓ All steps completed successfully!
+============================================================
+
